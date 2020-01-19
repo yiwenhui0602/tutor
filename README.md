@@ -5,8 +5,7 @@
 
 
 首先看一下数据库表。
-
-
+![image-20200119153136808](./README_imgs/WeChat4723abb641d4dac4557789d97b8f85ed.png)
 
 登录入口：
 
@@ -28,29 +27,29 @@
 
 第一个“信息管理”是每个角色都有的，但只有管理员右上角有添加入口。添加页码如下：
 
-![image-20200119155128157](/Users/hxy/Documents/hd/tutor/README_imgs/image-20200119155128157.png)
+![image-20200119155128157](./README_imgs/image-20200119155128157.png)
 
 管理员的第二个标签如下：
 
-![image-20200119155217486](/Users/hxy/Documents/hd/tutor/README_imgs/image-20200119155217486.png)
+![image-20200119155217486](./README_imgs/image-20200119155217486.png)
 
 其中教师管理：
 
-![image-20200119155248308](/Users/hxy/Documents/hd/tutor/README_imgs/image-20200119155248308.png)
+![image-20200119155248308](./README_imgs/image-20200119155248308.png)
 
 班级管理：
 
-![image-20200119155333163](/Users/hxy/Documents/hd/tutor/README_imgs/image-20200119155333163.png)
+![image-20200119155333163](./README_imgs/image-20200119155333163.png)
 
 科目管理：
 
-![image-20200119155401285](/Users/hxy/Documents/hd/tutor/README_imgs/image-20200119155401285.png)
+![image-20200119155401285](./README_imgs/image-20200119155401285.png)
 
 这些都包含了角色的创建。
 
 管理员最后一个tab“我的”，其实4个角色都差不多，就简单展示一些信息即可：
 
-![image-20200119155456077](/Users/hxy/Documents/hd/tutor/README_imgs/image-20200119155456077.png)
+![image-20200119155456077](./README_imgs/image-20200119155456077.png)
 
 
 
@@ -58,19 +57,19 @@
 
 除了管理员，教师、学生、家长登录时候都还有一个注册的功能，例如当管理员添加了教师账号A，表示A可以注册登录，因为A在教师表有记录，会先用A的信息去用户表查有没有账号密码，如果没有表示没注册，跳到注册页面。注册成功后，用户表有记录了，才可以登录。学生、家长亦是如此。
 
-![image-20200119155844962](/Users/hxy/Documents/hd/tutor/README_imgs/image-20200119155844962.png)
+![image-20200119155844962](./README_imgs/image-20200119155844962.png)
 
 第一个tab和管理员一样，只是没有添加入口。来看第二个入口：
 
-![image-20200119155933050](/Users/hxy/Documents/hd/tutor/README_imgs/image-20200119155933050.png)
+![image-20200119155933050](./README_imgs/image-20200119155933050.png)
 
 成绩管理包括：
 
-![image-20200119155953177](/Users/hxy/Documents/hd/tutor/README_imgs/image-20200119155953177.png)
+![image-20200119155953177](./README_imgs/image-20200119155953177.png)
 
 作业管理包括：
 
-![image-20200119160012888](/Users/hxy/Documents/hd/tutor/README_imgs/image-20200119160012888.png)
+![image-20200119160012888](./README_imgs/image-20200119160012888.png)
 
 
 
@@ -82,7 +81,7 @@
 
 分别为：
 
-![image-20200119160143964](/Users/hxy/Documents/hd/tutor/README_imgs/image-20200119160143964.png)
+![image-20200119160143964](./README_imgs/image-20200119160143964.png)
 
 课表的页面，前面有过，复用即可。
 
