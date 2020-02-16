@@ -7,6 +7,87 @@
 首先看一下数据库表。
 ![image-20200119153136808](./README_imgs/WeChat4723abb641d4dac4557789d97b8f85ed.png)
 
+接口文档：全用Post请求，返回统一格式为：code、msg、result（以下Response为result字段）
+
+1、登录：
+
+| Path     | /login                                                       |
+| -------- | ------------------------------------------------------------ |
+| Params   | {"account_number":xxx, "account_type":xxx, account_password:xxx} |
+| Response | {"account_number":xxx, "account_type":xxx, account_password:xxx, account_id:xxx} |
+
+2、新闻列表：
+
+| Path     | /newslist                                                    |
+| -------- | ------------------------------------------------------------ |
+| Params   | -                                                            |
+| Response | [{"news_id", "new_title", "news_subtitle", "news_date", "news_url"}]  【news表所有字段】 |
+
+3、公告列表：
+
+| Path     | /announcements                                               |
+| -------- | ------------------------------------------------------------ |
+| Params   | {"account_number":xxx, "account_type":xxx, account_password:xxx} |
+| Response | {"account_number":xxx, "account_type":xxx, account_password:xxx, account_id:xxx}【announcement表所有字段】 |
+
+4、添加新闻
+
+| Path     | /post/news                 |
+| -------- | -------------------------- |
+| Params   | 【news表所有字段（除id）】 |
+| Response | -                          |
+
+5、添加公告
+
+| Path     | /post/announcements                |
+| -------- | ---------------------------------- |
+| Params   | 【announcement表所有字段（除id）】 |
+| Response | -                                  |
+
+6、获取班级列表
+
+| Path     | /classList            |
+| -------- | --------------------- |
+| Params   | -                     |
+| Response | 数组[class表所有字段] |
+
+7、获取科目列表
+
+| Path     | /subjectList            |
+| -------- | ----------------------- |
+| Params   | -                       |
+| Response | 数组[subject表所有字段] |
+
+8、获取教师列表
+
+| Path     | /teacherList            |
+| -------- | ----------------------- |
+| Params   | -                       |
+| Response | 数组[teacher表所有字段] |
+
+9、获取班级列表
+
+| Path     | /classList            |
+| -------- | --------------------- |
+| Params   | -                     |
+| Response | 数组[class表所有字段] |
+
+10、获取作业列表
+
+| Path     | /classList               |
+| -------- | ------------------------ |
+| Params   | class_id                 |
+| Response | 数组[homework表所有字段] |
+
+11、添加教师信息
+
+| Path     | /addTeacher           |
+| -------- | --------------------- |
+| Params   | 【teacher表所有字段】 |
+| Response |                       |
+
+
+
 登录入口：
 
 ![image-20200119153136808](./README_imgs/image-20200119153136808.png)
