@@ -25,21 +25,21 @@
 
 3、公告列表：
 
-| Path     | /announcements                                               |
-| -------- | ------------------------------------------------------------ |
-| Params   | {"account_number":xxx, "account_type":xxx, account_password:xxx} |
-| Response | {"account_number":xxx, "account_type":xxx, account_password:xxx, account_id:xxx}【announcement表所有字段】 |
+| Path     | /announcements             |
+| -------- | -------------------------- |
+| Params   | -                          |
+| Response | 【announcement表所有字段】 |
 
 4、添加新闻
 
-| Path     | /post/news                 |
+| Path     | /postNews                  |
 | -------- | -------------------------- |
 | Params   | 【news表所有字段（除id）】 |
 | Response | -                          |
 
 5、添加公告
 
-| Path     | /post/announcements                |
+| Path     | /postAnnouncements                 |
 | -------- | ---------------------------------- |
 | Params   | 【announcement表所有字段（除id）】 |
 | Response | -                                  |
@@ -65,16 +65,16 @@
 | Params   | -                       |
 | Response | 数组[teacher表所有字段] |
 
-9、获取班级列表
+9、获取课程表列表
 
-| Path     | /classList            |
-| -------- | --------------------- |
-| Params   | -                     |
-| Response | 数组[class表所有字段] |
+| Path     | /courseList            |
+| -------- | ---------------------- |
+| Params   | class_id               |
+| Response | 数组[course表所有字段] |
 
 10、获取作业列表
 
-| Path     | /classList               |
+| Path     | /homeworkList            |
 | -------- | ------------------------ |
 | Params   | class_id                 |
 | Response | 数组[homework表所有字段] |
