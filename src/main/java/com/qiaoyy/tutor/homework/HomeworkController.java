@@ -35,7 +35,8 @@ public class HomeworkController {
     @RequestMapping(value = WebApi.QUERY_HOMEWORK_LIST, method = RequestMethod.POST)
     @ResponseBody
     public void queryNews(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        List<HomeworkEntity> list = homeworkManager.queryAll();
+        List<HomeworkEntity> list = homeworkManager.queryByClassId(Integer.parseInt(request.getParameter("class_id")));
+
 
         JSONArray jsonArray = new JSONArray();
         for (HomeworkEntity entity : list) {

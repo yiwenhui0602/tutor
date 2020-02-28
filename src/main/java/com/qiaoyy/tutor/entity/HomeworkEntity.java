@@ -12,10 +12,12 @@ import java.util.Objects;
 @Table(name = "homework", schema = "school", catalog = "")
 public class HomeworkEntity {
     private int hwId;
+    private int classId;
     private Date hwTime;
     private String hwTitle;
     private String hwDetail;
     private String hwFile;
+
 
     @Id
     @Column(name = "hw_id")
@@ -25,6 +27,16 @@ public class HomeworkEntity {
 
     public void setHwId(int hwId) {
         this.hwId = hwId;
+    }
+
+    @Basic
+    @Column(name = "class_id")
+    public int getClassId() {
+        return classId;
+    }
+
+    public void setClassId(int classId) {
+        this.classId = classId;
     }
 
     @Basic

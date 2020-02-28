@@ -20,4 +20,9 @@ public class HomeworkManager {
     public HomeworkEntity addHomework(HomeworkEntity entity) {
         return homeworkRepository.saveAndFlush(entity);
     }
+
+    public List<HomeworkEntity> queryByClassId(Integer classId) {
+        List<HomeworkEntity> list = homeworkRepository.findByClassId(classId);
+        return list;
+    }
 }
