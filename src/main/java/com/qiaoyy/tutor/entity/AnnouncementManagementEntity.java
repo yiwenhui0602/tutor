@@ -9,11 +9,11 @@ import java.util.Objects;
  * @date 2020/2/18 16:07
  */
 @Entity
-@Table(name = "announcement management", schema = "school", catalog = "")
+@Table(name = "announcement_management", schema = "school", catalog = "")
 public class AnnouncementManagementEntity {
     private int noticeId;
     private String noticeTitle;
-    private Date noticeTime;
+    private String noticeTime;
     private String noticeAuthor;
     private String noticeDetail;
 
@@ -39,11 +39,11 @@ public class AnnouncementManagementEntity {
 
     @Basic
     @Column(name = "notice_time")
-    public Date getNoticeTime() {
+    public String getNoticeTime() {
         return noticeTime;
     }
 
-    public void setNoticeTime(Date noticeTime) {
+    public void setNoticeTime(String noticeTime) {
         this.noticeTime = noticeTime;
     }
 
