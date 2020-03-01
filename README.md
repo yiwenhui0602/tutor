@@ -32,14 +32,14 @@
 
 4、添加新闻
 
-| Path     | /postNews                  |
+| Path     | /post/news                  |
 | -------- | -------------------------- |
 | Params   | 【news表所有字段（除id）】 |
 | Response | -                          |
 
 5、添加公告
 
-| Path     | /postAnnouncements                 |
+| Path     | /post/announcements                 |
 | -------- | ---------------------------------- |
 | Params   | 【announcement表所有字段（除id）】 |
 | Response | -                                  |
