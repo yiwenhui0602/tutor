@@ -10,11 +10,16 @@
 接口文档：全用Post请求，返回统一格式为：code、msg、result（以下Response为result字段）
 
 1、登录：
+account_type  
+0:管理员
+1:教师
+2:学生
+3:家长
 
 | Path     | /login                                                       |
 | -------- | ------------------------------------------------------------ |
 | Params   | {"account_number":xxx, "account_type":xxx, account_password:xxx} |
-| Response | {"account_number":xxx, "account_type":xxx, account_password:xxx, account_id:xxx} |
+| Response | {"account_number":xxx, "account_type":xxx, account_id:xxx} |
 
 2、新闻列表：
 
