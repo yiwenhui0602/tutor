@@ -53,13 +53,12 @@ public class AccountController {
         // 调用登录逻辑
         entity = accountManager.login(entity);
 
-        // 返回数据
-        JSONObject responseObject = new JSONObject();
-        responseObject.put("account_number", entity.getAccountNunmer());
-        responseObject.put("account_type", entity.getAccountType());
-        responseObject.put("account_id", entity.getAccountId());
-
         if (entity != null) {
+            // 返回数据
+            JSONObject responseObject = new JSONObject();
+            responseObject.put("account_number", entity.getAccountNunmer());
+            responseObject.put("account_type", entity.getAccountType());
+            responseObject.put("account_id", entity.getAccountId());
             responseModel = MBResponse.getMBResponse(MBResponseCode.SUCCESS, responseObject);
         } else {
             responseModel = MBResponse.getMBResponse(MBResponseCode.ERROR);

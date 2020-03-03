@@ -35,13 +35,15 @@ public class HomeworkController {
     @RequestMapping(value = WebApi.QUERY_HOMEWORK_LIST, method = RequestMethod.POST)
     @ResponseBody
     public void queryNews(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        List<HomeworkEntity> list = homeworkManager.queryAll();
+        List<HomeworkEntity> list = homeworkManager.queryByClassId(Integer.parseInt(request.getParameter("class_id")));
+
 
         JSONArray jsonArray = new JSONArray();
         for (HomeworkEntity entity : list) {
             JSONObject object = new JSONObject();
             object.put("hw_id", entity.getHwId());
-            object.put("hw_file", entity.getHwFile());
+            object.put("class_id", entity.getClassId());
+            object.put("subject_id", entity.getSubjectId());
             object.put("hw_detail", entity.getHwDetail());
             object.put("hw_title", entity.getHwTitle());
             object.put("hw_time", entity.getHwTime());
@@ -61,7 +63,7 @@ public class HomeworkController {
         String file = request.getParameter("hw_file");
         String detail = request.getParameter("hw_detail");
         String title = request.getParameter("hw_title");
-        Date date = new Date(Calendar.getInstance().getTimeInMillis());
+        String date = request.getParameter("hw_date");
 
         MBResponse responseModel = null;
 
@@ -82,7 +84,6 @@ public class HomeworkController {
             return;
         }
 
-        entity.setHwFile(file);
         entity.setHwDetail(detail);
         entity.setHwTitle(title);
         entity.setHwTime(date);

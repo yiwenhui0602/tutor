@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.qiaoyy.tutor.WebApi;
 import com.qiaoyy.tutor.entity.AnnouncementManagementEntity;
+import com.qiaoyy.util.DateUtils;
 import com.qiaoyy.util.MBResponse;
 import com.qiaoyy.util.MBResponseCode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class AnnouncementsController {
             JSONObject object = new JSONObject();
             object.put("notice_id", entity.getNoticeId());
             object.put("notice_title", entity.getNoticeTitle());
-            object.put("notice_time", entity.getNoticeTime().getTime());
+            object.put("notice_time", entity.getNoticeTime());
             object.put("notice_author", entity.getNoticeAuthor());
             object.put("notice_detail", entity.getNoticeDetail());
             jsonArray.add(object);
@@ -84,7 +85,7 @@ public class AnnouncementsController {
 
         entity.setNoticeTitle(title);
         entity.setNoticeAuthor(author);
-        entity.setNoticeTime(new Date(Calendar.getInstance().getTimeInMillis()));
+        entity.setNoticeTime(DateUtils.getCurrentDate());
         entity.setNoticeDetail(detail);
         entity = announcementsManager.addAnnouncements(entity);
 

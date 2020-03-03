@@ -1,6 +1,5 @@
 package com.qiaoyy.tutor.user;
 
-import com.qiaoyy.core.AppInit;
 import com.qiaoyy.tutor.entity.AccountInformationEntity;
 import com.qiaoyy.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +16,8 @@ public class AccountManager {
         AccountInformationEntity accountInformationEntity = accountRepository.findByNumber(entity.getAccountNunmer());
         if (accountInformationEntity != null) {
             // 密码md5加密
-            String password = MD5Util.encodeByMD5(accountInformationEntity.getAccountPassword());
-            if (entity.getAccountPassword().equals(password)) {
+            String password = MD5Util.encodeByMD5(entity.getAccountPassword());
+            if (password.equals(accountInformationEntity.getAccountPassword())) {
                 return entity;
             }
             return null;

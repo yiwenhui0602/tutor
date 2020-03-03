@@ -14,7 +14,7 @@ public class NewsManagementEntity {
     private int newsId;
     private String newsTitle;
     private String newsSubtitle;
-    private Date newsDate;
+    private String newsDate;
     private String newsUrl;
 
     @Id
@@ -49,11 +49,11 @@ public class NewsManagementEntity {
 
     @Basic
     @Column(name = "news_date")
-    public Date getNewsDate() {
+    public String getNewsDate() {
         return newsDate;
     }
 
-    public void setNewsDate(Date newsDate) {
+    public void setNewsDate(String newsDate) {
         this.newsDate = newsDate;
     }
 

@@ -12,10 +12,12 @@ import java.util.Objects;
 @Table(name = "homework", schema = "school", catalog = "")
 public class HomeworkEntity {
     private int hwId;
-    private Date hwTime;
+    private int classId;
+    private int subjectId;
+    private String hwTime;
     private String hwTitle;
     private String hwDetail;
-    private String hwFile;
+
 
     @Id
     @Column(name = "hw_id")
@@ -28,12 +30,32 @@ public class HomeworkEntity {
     }
 
     @Basic
+    @Column(name = "class_id")
+    public int getClassId() {
+        return classId;
+    }
+
+    public void setClassId(int classId) {
+        this.classId = classId;
+    }
+
+    @Basic
+    @Column(name = "subjectId")
+    public int getSubjectId() {
+        return subjectId;
+    }
+
+    public void setSubjectId(int subjectId) {
+        this.subjectId = subjectId;
+    }
+
+    @Basic
     @Column(name = "hw_time")
-    public Date getHwTime() {
+    public String getHwTime() {
         return hwTime;
     }
 
-    public void setHwTime(Date hwTime) {
+    public void setHwTime(String hwTime) {
         this.hwTime = hwTime;
     }
 
@@ -57,15 +79,15 @@ public class HomeworkEntity {
         this.hwDetail = hwDetail;
     }
 
-    @Basic
-    @Column(name = "hw_file")
-    public String getHwFile() {
-        return hwFile;
-    }
-
-    public void setHwFile(String hwFile) {
-        this.hwFile = hwFile;
-    }
+//    @Basic
+//    @Column(name = "hw_file")
+//    public String getHwFile() {
+//        return hwFile;
+//    }
+//
+//    public void setHwFile(String hwFile) {
+//        this.hwFile = hwFile;
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -75,12 +97,11 @@ public class HomeworkEntity {
         return hwId == that.hwId &&
                 Objects.equals(hwTime, that.hwTime) &&
                 Objects.equals(hwTitle, that.hwTitle) &&
-                Objects.equals(hwDetail, that.hwDetail) &&
-                Objects.equals(hwFile, that.hwFile);
+                Objects.equals(hwDetail, that.hwDetail);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(hwId, hwTime, hwTitle, hwDetail, hwFile);
+        return Objects.hash(hwId, hwTime, hwTitle, hwDetail);
     }
 }

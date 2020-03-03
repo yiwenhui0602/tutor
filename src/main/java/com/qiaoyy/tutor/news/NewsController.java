@@ -6,6 +6,7 @@ import com.qiaoyy.tutor.WebApi;
 import com.qiaoyy.tutor.entity.NewsManagementEntity;
 import com.qiaoyy.util.MBResponse;
 import com.qiaoyy.util.MBResponseCode;
+import com.qiaoyy.util.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -16,9 +17,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Date;
+//import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 新闻
@@ -44,7 +47,7 @@ public class NewsController {
             newsObject.put("news_id", entity.getNewsId());
             newsObject.put("news_title", entity.getNewsTitle());
             newsObject.put("news_subtitle", entity.getNewsSubtitle());
-            newsObject.put("news_date", entity.getNewsDate().getTime());
+            newsObject.put("news_date", entity.getNewsDate());
             newsObject.put("news_url", entity.getNewsUrl());
             jsonArray.add(newsObject);
         }
@@ -84,7 +87,7 @@ public class NewsController {
 
         entity.setNewsTitle(title);
         entity.setNewsSubtitle(subtitle);
-        entity.setNewsDate(new Date(Calendar.getInstance().getTimeInMillis()));
+        entity.setNewsDate(DateUtils.getCurrentDate());
         entity.setNewsUrl(url);
         entity = newsManager.addNews(entity);
 

@@ -59,4 +59,9 @@ public class DateUtils {
             c.add(Calendar.DATE, day);
             return c.getTime();
     }
+
+    public static String getCurrentDate(){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        return simpleDateFormat.format(new Date());
+    }
 }
