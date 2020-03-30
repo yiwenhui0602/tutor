@@ -12,9 +12,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AccountRepository extends JpaRepository<AccountInformationEntity, Integer> {
 
-    @Query(value = "from AccountInformationEntity where accountId=:accountId")
-    public AccountInformationEntity findById(@Param("accountId") Integer accountId);
-
     @Query(value = "from AccountInformationEntity where accountNunmer=:accountNunmer and accountPassword=:accountPassword")
     public AccountInformationEntity findByNumberAndPassword(@Param("accountNunmer") String accountNunmer, @Param("accountPassword") String accountPassword);
 
