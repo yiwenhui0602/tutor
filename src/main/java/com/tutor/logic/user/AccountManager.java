@@ -16,7 +16,7 @@ public class AccountManager {
         AccountInformationEntity accountInformationEntity = accountRepository.findByNumber(entity.getAccountNunmer());
         if (accountInformationEntity != null) {
             // 密码md5加密
-            String password = MD5Util.encodeByMD5(entity.getAccountPassword());
+            String password = entity.getAccountPassword();
             if (password.equals(accountInformationEntity.getAccountPassword())) {
                 return entity;
             }
