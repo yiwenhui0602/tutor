@@ -49,8 +49,13 @@ public class TeacherController {
             object.put("teacher_account", entity.getTeacherAccount());
             object.put("teacher_phone", entity.getTeacherPhone());
             object.put("subject_id", entity.getSubjectId());
-            SubjectInformationEntity subject = subjectManager.queryBySubjectId(entity.getSubjectId());
-            object.put("subject_name", subject.getSubjectName());
+
+            if (entity.getSubjectId() != null) {
+                SubjectInformationEntity subject = subjectManager.queryBySubjectId(entity.getSubjectId());
+                if (subject != null) {
+                    object.put("subject_name", subject.getSubjectName());
+                }
+            }
             jsonArray.add(object);
         }
 
