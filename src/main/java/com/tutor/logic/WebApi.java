@@ -22,6 +22,8 @@ public class WebApi {
     public static final String ADD_CLASS = "/add/class";
     // 查询科目列表
     public static final String QUERY_SUBJECT_LIST = "/subjectList";
+    // 查询单个科目信息
+    public static final String QUERY_SUBJECT_INFO = "/subjectInfo";
     // 添加科目
     public static final String ADD_SUBJECT_LIST = "/add/subject";
     // 查询教师列表

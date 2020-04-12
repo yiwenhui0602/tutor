@@ -15,6 +15,7 @@ public class TeacherInformaEntity {
     private String teacherGender;
     private String teacherPhone;
     private String teacherAccount;
+    private Integer subjectId;
 
     @Id
     @Column(name = "teacher_id")
@@ -25,6 +26,17 @@ public class TeacherInformaEntity {
     public void setTeacherId(int teacherId) {
         this.teacherId = teacherId;
     }
+
+    @Basic
+    @Column(name = "subject_id")
+    public Integer getSubjectId() {
+        return subjectId;
+    }
+
+    public void setSubjectId(Integer subjectId) {
+        this.subjectId = subjectId;
+    }
+
 
     @Basic
     @Column(name = "teacher_name")

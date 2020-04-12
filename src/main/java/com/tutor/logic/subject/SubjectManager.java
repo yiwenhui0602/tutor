@@ -1,5 +1,6 @@
 package com.tutor.logic.subject;
 
+import com.tutor.logic.entity.HomeworkEntity;
 import com.tutor.logic.entity.SubjectInformationEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,5 +20,10 @@ public class SubjectManager {
 
     public SubjectInformationEntity addSubject(SubjectInformationEntity entity) {
         return subjectRepository.saveAndFlush(entity);
+    }
+
+    public SubjectInformationEntity queryBySubjectId(Integer subjectId) {
+        SubjectInformationEntity entity = subjectRepository.findBySubjectId(subjectId);
+        return entity;
     }
 }

@@ -3,7 +3,9 @@ package com.tutor.logic.teacher;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.tutor.logic.WebApi;
+import com.tutor.logic.entity.SubjectInformationEntity;
 import com.tutor.logic.entity.TeacherInformaEntity;
+import com.tutor.logic.subject.SubjectManager;
 import com.tutor.util.MBResponse;
 import com.tutor.util.MBResponseCode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +31,14 @@ public class TeacherController {
 
     @Autowired
     private TeacherManager teacherManager;
+    @Autowired
+    private SubjectManager subjectManager;
 
     @RequestMapping(value = WebApi.QUERY_TEACHER_LIST, method = RequestMethod.POST)
     @ResponseBody
     public void queryNews(HttpServletRequest request, HttpServletResponse response) throws IOException {
         List<TeacherInformaEntity> list = teacherManager.queryAll();
+
 
         JSONArray jsonArray = new JSONArray();
         for (TeacherInformaEntity entity : list) {
@@ -43,6 +48,9 @@ public class TeacherController {
             object.put("teacher_gender", entity.getTeacherGender());
             object.put("teacher_account", entity.getTeacherAccount());
             object.put("teacher_phone", entity.getTeacherPhone());
+            object.put("subject_id", entity.getSubjectId());
+            SubjectInformationEntity subject = subjectManager.queryBySubjectId(entity.getSubjectId());
+            object.put("subject_name", subject.getSubjectName());
             jsonArray.add(object);
         }
 
@@ -56,10 +64,12 @@ public class TeacherController {
     public void addTeacher(HttpServletRequest request, HttpServletResponse response) throws IOException {
         TeacherInformaEntity entity = new TeacherInformaEntity();
 
+        int teacherId = Integer.parseInt(request.getParameter("teacher_id"));
         String teacherAccount = request.getParameter("teacher_account");
         String teacherGender = request.getParameter("teacher_gender");
         String teacherName = request.getParameter("teacher_name");
         String teacherPhone = request.getParameter("teacher_phone");
+        int subjectId = Integer.parseInt(request.getParameter("subject_id"));
 
         MBResponse responseModel = null;
 
@@ -80,10 +90,12 @@ public class TeacherController {
             return;
         }
 
+        entity.setTeacherId(teacherId);
         entity.setTeacherAccount(teacherAccount);
         entity.setTeacherGender(teacherGender);
         entity.setTeacherName(teacherName);
         entity.setTeacherPhone(teacherPhone);
+        entity.setSubjectId(subjectId);
         entity = teacherManager.addTeacher(entity);
 
         if (entity != null) {

@@ -74,4 +74,14 @@ public class SubjectController {
         }
         MBResponse.sendResponse(request, response, responseModel);
     }
+
+    @RequestMapping(value = WebApi.QUERY_SUBJECT_INFO, method = RequestMethod.POST)
+    @ResponseBody
+    public void queryCourseInfo(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        SubjectInformationEntity entity = subjectManager.queryBySubjectId(Integer.parseInt(request.getParameter("subject_id")));
+
+        MBResponse responseModel = MBResponse.getMBResponse(MBResponseCode.SUCCESS, entity);
+        // 返回数据
+        MBResponse.sendResponse(request, response, responseModel);
+    }
 }

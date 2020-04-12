@@ -14,6 +14,7 @@ public class StudentInformationEntity {
     private String studentName;
     private String studentGender;
     private String studentAccount;
+    private int classId;
 
     @Id
     @Column(name = "student_id")
@@ -23,6 +24,16 @@ public class StudentInformationEntity {
 
     public void setStudentId(int studentId) {
         this.studentId = studentId;
+    }
+
+    @Basic
+    @Column(name = "class_id")
+    public int getClassId() {
+        return classId;
+    }
+
+    public void setClassId(int classId) {
+        this.classId = classId;
     }
 
     @Basic
