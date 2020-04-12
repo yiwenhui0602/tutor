@@ -37,17 +37,21 @@ public class CourseController {
     public void queryNews(HttpServletRequest request, HttpServletResponse response) throws IOException {
         List<CoursetableEntity> list = courseManager.queryAll();
 
-        JSONArray jsonArray = new JSONArray();
-        for (CoursetableEntity entity : list) {
-            JSONObject object = new JSONObject();
-            object.put("course_id", entity.getCourseId());
-            object.put("course_time", entity.getCourseTime());
-            object.put("course_address", entity.getCourseAddress());
-            object.put("course_date", entity.getCourseDate());
-            jsonArray.add(object);
+        JSONArray sevenJsons = new JSONArray();
+        for (int i = 0; i < 7; i++) {
+            JSONArray jsonArray = new JSONArray();
+            for (CoursetableEntity entity : list) {
+                JSONObject object = new JSONObject();
+                object.put("course_id", entity.getCourseId());
+                object.put("course_time", entity.getCourseTime());
+                object.put("course_address", entity.getCourseAddress());
+                object.put("course_date", entity.getCourseDate());
+                jsonArray.add(object);
+            }
+            sevenJsons.add(jsonArray);
         }
 
-        MBResponse responseModel = MBResponse.getMBResponse(MBResponseCode.SUCCESS, jsonArray);
+        MBResponse responseModel = MBResponse.getMBResponse(MBResponseCode.SUCCESS, sevenJsons);
         // 返回数据
         MBResponse.sendResponse(request, response, responseModel);
     }

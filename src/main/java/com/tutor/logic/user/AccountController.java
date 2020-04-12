@@ -4,7 +4,8 @@ import com.tutor.logic.WebApi;
 import com.tutor.logic.entity.AccountInformationEntity;
 import com.tutor.util.MBResponse;
 import com.tutor.util.MBResponseCode;
-import org.json.JSONObject;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -59,6 +60,40 @@ public class AccountController {
             responseObject.put("account_number", entity.getAccountNunmer());
             responseObject.put("account_type", entity.getAccountType());
             responseObject.put("account_id", entity.getAccountId());
+
+            if (entity.getAccountType() == 0) {
+                JSONObject adminInfo = new JSONObject();
+                adminInfo.put("admin_name", "admin");
+                responseObject.put("admin_info", adminInfo);
+            } else if (entity.getAccountType() == 1) {
+                JSONObject teacherInfo = new JSONObject();
+                teacherInfo.put("teacher_id", "111111111");
+                teacherInfo.put("teacher_name", "教师张");
+                teacherInfo.put("teacher_gender", "男");
+                teacherInfo.put("teacher_phone", "13888888888");
+                teacherInfo.put("subject_id", "142030601");
+                teacherInfo.put("teacher_account", entity.getAccountId());
+                responseObject.put("teacher_info", teacherInfo);
+            } else if (entity.getAccountType() == 2) {
+                JSONObject studentInfo = new JSONObject();
+                studentInfo.put("student_name", "学生李");
+                studentInfo.put("student_gender", "女");
+                studentInfo.put("student_id", "142030601");
+                studentInfo.put("class_id", "160310100");
+                studentInfo.put("student_account", entity.getAccountId());
+                responseObject.put("student_info", studentInfo);
+            } else if (entity.getAccountType() == 3) {
+                JSONObject parentInfo = new JSONObject();
+                parentInfo.put("parent_id", "22222222");
+                parentInfo.put("parent_name", "家长王");
+                parentInfo.put("parent_gender", "男");
+                parentInfo.put("parent_phone", "18900000000");
+                parentInfo.put("student_id", "142030601");
+                parentInfo.put("relationship", "父亲");
+                parentInfo.put("parent_account", entity.getAccountId());
+                responseObject.put("parent_info", parentInfo);
+            }
+
             responseModel = MBResponse.getMBResponse(MBResponseCode.SUCCESS, responseObject);
         } else {
             responseModel = MBResponse.getMBResponse(MBResponseCode.ERROR);
