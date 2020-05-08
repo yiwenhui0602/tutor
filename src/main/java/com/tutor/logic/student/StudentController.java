@@ -25,7 +25,7 @@ public class StudentController {
 
     @RequestMapping(value = WebApi.QUERY_STUDENT_LIST, method = RequestMethod.POST)
     @ResponseBody
-    public void queryNews(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void queryStudentList(HttpServletRequest request, HttpServletResponse response) throws IOException {
         List<StudentInformationEntity> list;
         String class_id = request.getParameter("class_id");
         if (class_id != null) {

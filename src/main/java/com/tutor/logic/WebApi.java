@@ -5,7 +5,6 @@ package com.tutor.logic;
  * @date 2020/2/18 15:32
  */
 public class WebApi {
-
     // 登录
     public static final String USER_LOGIN = "/login";
     // 查询新闻

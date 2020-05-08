@@ -68,15 +68,17 @@ public class HomeworkController {
         String detail = request.getParameter("hw_detail");
         String title = request.getParameter("hw_title");
         String date = request.getParameter("hw_date");
+        String class_id = request.getParameter("class_id");
+        String subject_id = request.getParameter("subject_id");
 
         MBResponse responseModel = null;
 
         // 参数校验
-        if (StringUtils.isEmpty(file)) {
-            responseModel = MBResponse.getMBResponse(MBResponseCode.PARAMS_ERR, "作业文件不能为空");
-            MBResponse.sendResponse(request, response, responseModel);
-            return;
-        }
+//        if (StringUtils.isEmpty(file)) {
+//            responseModel = MBResponse.getMBResponse(MBResponseCode.PARAMS_ERR, "作业文件不能为空");
+//            MBResponse.sendResponse(request, response, responseModel);
+//            return;
+//        }
         if (StringUtils.isEmpty(detail)) {
             responseModel = MBResponse.getMBResponse(MBResponseCode.PARAMS_ERR, "作业详情不能为空");
             MBResponse.sendResponse(request, response, responseModel);
@@ -91,6 +93,8 @@ public class HomeworkController {
         entity.setHwDetail(detail);
         entity.setHwTitle(title);
         entity.setHwTime(date);
+        entity.setClassId(Integer.parseInt(class_id));
+        entity.setSubjectId(Integer.parseInt(subject_id));
         entity = homeworkManager.addHomework(entity);
 
         if (entity != null) {
