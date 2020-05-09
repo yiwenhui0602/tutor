@@ -15,6 +15,8 @@ public class StudentInformationEntity {
     private String studentGender;
     private String studentAccount;
     private int classId;
+    private String parentName;
+    private String parentRelation;
 
     @Id
     @Column(name = "student_id")
@@ -31,7 +33,6 @@ public class StudentInformationEntity {
     public int getClassId() {
         return classId;
     }
-
     public void setClassId(int classId) {
         this.classId = classId;
     }
@@ -64,6 +65,25 @@ public class StudentInformationEntity {
 
     public void setStudentAccount(String studentAccount) {
         this.studentAccount = studentAccount;
+    }
+
+    @Basic
+    @Column(name = "parent_name")
+    public String getParentName() {
+        return parentName;
+    }
+
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
+    }
+
+    @Basic
+    @Column(name = "parent_relation")
+    public String getParentRelation() {
+        return parentRelation;
+    }
+    public void setParentRelation(String parentRelation) {
+        this.parentRelation = parentRelation;
     }
 
     @Override

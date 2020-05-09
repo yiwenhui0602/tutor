@@ -46,6 +46,7 @@ public class CourseController {
                 object.put("course_time", entity.getCourseTime());
                 object.put("course_address", entity.getCourseAddress());
                 object.put("course_date", entity.getCourseDate());
+                object.put("course_name", "临时课程名");
                 jsonArray.add(object);
             }
             sevenJsons.add(jsonArray);

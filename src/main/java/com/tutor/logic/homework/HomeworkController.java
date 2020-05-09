@@ -64,7 +64,7 @@ public class HomeworkController {
     public void addHomework(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HomeworkEntity entity = new HomeworkEntity();
 
-        String file = request.getParameter("hw_file");
+        String hw_id = request.getParameter("hw_id");
         String detail = request.getParameter("hw_detail");
         String title = request.getParameter("hw_title");
         String date = request.getParameter("hw_date");
@@ -74,11 +74,6 @@ public class HomeworkController {
         MBResponse responseModel = null;
 
         // 参数校验
-//        if (StringUtils.isEmpty(file)) {
-//            responseModel = MBResponse.getMBResponse(MBResponseCode.PARAMS_ERR, "作业文件不能为空");
-//            MBResponse.sendResponse(request, response, responseModel);
-//            return;
-//        }
         if (StringUtils.isEmpty(detail)) {
             responseModel = MBResponse.getMBResponse(MBResponseCode.PARAMS_ERR, "作业详情不能为空");
             MBResponse.sendResponse(request, response, responseModel);
@@ -88,6 +83,10 @@ public class HomeworkController {
             responseModel = MBResponse.getMBResponse(MBResponseCode.PARAMS_ERR, "作业标题不能为空");
             MBResponse.sendResponse(request, response, responseModel);
             return;
+        }
+
+        if (StringUtils.isEmpty(hw_id) == false) {
+            entity.setHwId(Integer.parseInt(hw_id));
         }
 
         entity.setHwDetail(detail);

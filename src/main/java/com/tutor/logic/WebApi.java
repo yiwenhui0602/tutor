@@ -39,6 +39,8 @@ public class WebApi {
     public static final String ADD_HOMEWORK = "/add/homework";
     // 查询学生列表
     public static final String QUERY_STUDENT_LIST = "/studentList";
+    // 添加学生
+    public static final String QUERY_ADD_STUDENT = "/add/student";
     // 查询考试列表
     public static final String QUERY_EXAM_LIST = "/examList";
     // 添加考试
