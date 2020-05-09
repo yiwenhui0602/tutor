@@ -45,6 +45,8 @@ public class WebApi {
     public static final String ADD_EXAM = "/add/exam";
     // 查询分数  exam_id  or  student_id
     public static final String QUERY_SCORE_LIST = "/scoreList";
+    // 查询学生分数 student_id
+    public static final String QUERY_STUDENT_SCORE_LIST = "/studentScoreList";
     // 添加分数
     public static final String ADD_SCORE = "/add/score";
 }

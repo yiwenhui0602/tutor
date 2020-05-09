@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.tutor.logic.WebApi;
 import com.tutor.logic.entity.ExamInfomationEntity;
 import com.tutor.logic.entity.ScoreInfomationEntity;
+import com.tutor.logic.exam.ExamManager;
 import com.tutor.logic.homework.HomeworkManager;
 import com.tutor.util.MBResponse;
 import com.tutor.util.MBResponseCode;
@@ -25,16 +26,43 @@ import java.util.List;
 public class ScoreController {
     @Autowired
     private ScoreManager scoreManager;
+    @Autowired
+    private ExamManager examManager;
+
 
     @RequestMapping(value = WebApi.QUERY_SCORE_LIST, method = RequestMethod.POST)
     @ResponseBody
     public void queryList(HttpServletRequest request, HttpServletResponse response) throws IOException {
         List<ScoreInfomationEntity> list;
         String exam_id = request.getParameter("exam_id");
-        String student_id = request.getParameter("student_id");
         if (exam_id != null) {
             list = scoreManager.queryByExamId(Integer.parseInt(exam_id));
-        } else if (student_id != null) {
+        } else {
+            list = scoreManager.queryAll();
+        }
+
+        JSONArray jsonArray = new JSONArray();
+        for (ScoreInfomationEntity entity : list) {
+            JSONObject object = new JSONObject();
+            object.put("score_id", entity.getScoreId());
+            object.put("exam_id", entity.getExamId());
+            object.put("student_id", entity.getStudentId());
+            object.put("student_name", entity.getStudentName());
+            object.put("score_num", entity.getScoreNum());
+            jsonArray.add(object);
+        }
+
+        MBResponse responseModel = MBResponse.getMBResponse(MBResponseCode.SUCCESS, jsonArray);
+        // 返回数据
+        MBResponse.sendResponse(request, response, responseModel);
+    }
+
+    @RequestMapping(value = WebApi.QUERY_STUDENT_SCORE_LIST, method = RequestMethod.POST)
+    @ResponseBody
+    public void queryStudentScoreList(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        List<ScoreInfomationEntity> list;
+        String student_id = request.getParameter("student_id");
+        if (student_id != null) {
             list = scoreManager.queryByStudentId(Integer.parseInt(student_id));
         } else {
             list = scoreManager.queryAll();
@@ -48,6 +76,14 @@ public class ScoreController {
             object.put("student_id", entity.getStudentId());
             object.put("student_name", entity.getStudentName());
             object.put("score_num", entity.getScoreNum());
+
+            List<ExamInfomationEntity> exams = examManager.queryExamById(entity.getExamId());
+            if (exams.size() > 0) {
+                ExamInfomationEntity exam = exams.get(0);
+                object.put("exam_name", exam.getExamName());
+                object.put("subject_name", exam.getSubjectName());
+            }
+
             jsonArray.add(object);
         }
 
@@ -77,7 +113,9 @@ public class ScoreController {
         }
 
         if (StringUtils.isEmpty(score_id) == false) {
-            entity.setExamId(Integer.parseInt(score_id));
+            entity.setScoreId(Integer.parseInt(score_id));
+        } else  {
+//            entity.setExamId(0);
         }
         entity.setExamId(Integer.parseInt(exam_id));
         entity.setStudentId(Integer.parseInt(student_id));
