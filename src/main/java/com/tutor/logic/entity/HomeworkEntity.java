@@ -12,11 +12,11 @@ import java.util.Objects;
 public class HomeworkEntity {
     private int hwId;
     private int classId;
+    private String className;
     private int subjectId;
     private String hwTime;
     private String hwTitle;
     private String hwDetail;
-
 
     @Id
     @Column(name = "hw_id")
@@ -37,6 +37,11 @@ public class HomeworkEntity {
     public void setClassId(int classId) {
         this.classId = classId;
     }
+
+    @Basic
+    @Column(name = "class_name")
+    public String getClassName() { return className; }
+    public void setClassName(String className) { this.className = className; }
 
     @Basic
     @Column(name = "subjectId")

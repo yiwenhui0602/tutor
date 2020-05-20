@@ -51,6 +51,7 @@ public class HomeworkController {
             object.put("hw_detail", entity.getHwDetail());
             object.put("hw_title", entity.getHwTitle());
             object.put("hw_time", entity.getHwTime());
+            object.put("class_name", entity.getClassName());
             jsonArray.add(object);
         }
 
@@ -69,6 +70,7 @@ public class HomeworkController {
         String title = request.getParameter("hw_title");
         String date = request.getParameter("hw_date");
         String class_id = request.getParameter("class_id");
+        String class_name = request.getParameter("class_name");
         String subject_id = request.getParameter("subject_id");
 
         MBResponse responseModel = null;
@@ -93,6 +95,7 @@ public class HomeworkController {
         entity.setHwTitle(title);
         entity.setHwTime(date);
         entity.setClassId(Integer.parseInt(class_id));
+        entity.setClassName(class_name);
         entity.setSubjectId(Integer.parseInt(subject_id));
         entity = homeworkManager.addHomework(entity);
 
