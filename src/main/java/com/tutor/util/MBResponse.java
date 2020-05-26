@@ -22,7 +22,7 @@ public class MBResponse {
         this.result = result;
     }
 
-
+    // 以下两个方法为适配器方法
     public static MBResponse getMBResponse(String code) {
         return new MBResponse(code, null, null);
     }
