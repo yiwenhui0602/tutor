@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * 新闻
  *
- * @author 何金成
+ * @author yiwenhui
  * @date 2020/2/18 16:40
  */
 @Controller
@@ -35,6 +35,7 @@ public class HomeworkController {
     public void queryNews(HttpServletRequest request, HttpServletResponse response) throws IOException {
         List<HomeworkEntity> list;
 
+        // 从请求参数中取class_id，如果为null，则表示请求中没带这个参数
         String class_id = request.getParameter("class_id");
         if (class_id != null) {
             list = homeworkManager.queryByClassId(Integer.parseInt(class_id));
@@ -86,7 +87,7 @@ public class HomeworkController {
             MBResponse.sendResponse(request, response, responseModel);
             return;
         }
-
+        // 如果有id代表已有修改，否则为新增
         if (StringUtils.isEmpty(hw_id) == false) {
             entity.setHwId(Integer.parseInt(hw_id));
         }

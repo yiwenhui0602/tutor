@@ -9,7 +9,7 @@ import java.util.concurrent.*;
 /**
  * The type Executor pool.
  *
- * @author 何金成
+ * @author yiwenhui
  * @ClassName: ThreadPool
  * @Description: 线程池管理
  * @date 2016年4月18日 下午3:42:42

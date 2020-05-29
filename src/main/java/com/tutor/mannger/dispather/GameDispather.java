@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 /**
  * The type GameDispather.
  *
- * @author 何金成
+ * @author yiwenhui
  * @ClassName: GameDispather
  * @Description: 消息路由分发
  * @date 2015年12月14日 下午7:12:57

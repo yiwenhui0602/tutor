@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 /**
- * @author 何金成
+ * @author yiwenhui
  * @date 2020/2/18 16:08
  */
 @Entity

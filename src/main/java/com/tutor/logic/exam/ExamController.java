@@ -91,7 +91,7 @@ public class ExamController {
         entity.setSubjectName(subject_name);
         entity.setClassId(class_id);
         entity.setClassName(class_name);
-        entity = examManager.addCourse(entity);
+        entity = examManager.addExam(entity);
 
         if (entity != null) {
             responseModel = MBResponse.getMBResponse(MBResponseCode.SUCCESS);

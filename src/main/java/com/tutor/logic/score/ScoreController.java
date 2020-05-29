@@ -76,11 +76,11 @@ public class ScoreController {
             object.put("student_id", entity.getStudentId());
             object.put("student_name", entity.getStudentName());
             object.put("score_num", entity.getScoreNum());
-
+            // 仅有考试id还不够，还需要有考试名称、科目名称，通过examManager去查
             List<ExamInfomationEntity> exams = examManager.queryExamById(entity.getExamId());
-            if (exams.size() > 0) {
-                ExamInfomationEntity exam = exams.get(0);
-                object.put("exam_name", exam.getExamName());
+            if (exams.size() > 0) {//如果查到的数组个数大于0，代表查到了，实际上只会有一个
+                ExamInfomationEntity exam = exams.get(0);//之取第0个元素
+                object.put("exam_name", exam.getExamName());//从考试对象中取名称，塞到json中去
                 object.put("subject_name", exam.getSubjectName());
             }
 

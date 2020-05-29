@@ -20,10 +20,11 @@ public class ExamManager {
         return list;
     }
 
-    public ExamInfomationEntity addCourse(ExamInfomationEntity entity) {
+    public ExamInfomationEntity addExam(ExamInfomationEntity entity) {
         return examRepository.saveAndFlush(entity);
     }
 
+    // 查询id为xx的考试信息对象，结果是数组
     public List<ExamInfomationEntity> queryExamById(Integer examId) {
         List<ExamInfomationEntity> list = examRepository.findByExamId(examId);
         return list;

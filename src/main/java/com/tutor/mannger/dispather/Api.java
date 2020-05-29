@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author 何金成
+ * @author yiwenhui
  * @ClassName: Api
  */
 public enum Api implements ApiEnum {
