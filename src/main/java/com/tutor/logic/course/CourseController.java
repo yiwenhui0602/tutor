@@ -38,15 +38,16 @@ public class CourseController {
         List<CoursetableEntity> list = courseManager.queryAll();
 
         JSONArray sevenJsons = new JSONArray();
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 5; i++) {
             JSONArray jsonArray = new JSONArray();
-            for (CoursetableEntity entity : list) {
+            for (int j = 0; j < 4; j++) {
+                CoursetableEntity entity = list.get(i * 4 + j);
                 JSONObject object = new JSONObject();
                 object.put("course_id", entity.getCourseId());
                 object.put("course_time", entity.getCourseTime());
                 object.put("course_address", entity.getCourseAddress());
                 object.put("course_date", entity.getCourseDate());
-                object.put("course_name", "临时课程名");
+                object.put("course_name", entity.getSubjectName());
                 jsonArray.add(object);
             }
             sevenJsons.add(jsonArray);

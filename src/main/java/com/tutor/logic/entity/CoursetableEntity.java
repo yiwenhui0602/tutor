@@ -15,6 +15,7 @@ public class CoursetableEntity {
     private Date courseDate;
     private String courseAddress;
     private String courseTime;
+    private String subjectName;
 
     @Id
     @Column(name = "course_id")
@@ -54,6 +55,16 @@ public class CoursetableEntity {
 
     public void setCourseTime(String courseTime) {
         this.courseTime = courseTime;
+    }
+
+    @Basic
+    @Column(name = "subject_name")
+    public String getSubjectName() {
+        return subjectName;
+    }
+
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
     }
 
     @Override
